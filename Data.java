@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Data
 {
    ArrayList<Movie> datan = new ArrayList<Movie>(); 
-   int aind;
+   int aind = -1;
    public void add(Movie var)
    {  
       //if there are no elements, start at 0
@@ -43,11 +43,14 @@ public class Data
    }
    public void printall()
    {
-      for(int i = 0; i <= aind; i++)
-      {
-         System.out.println("Movie: \n");
-         printone(i); 
-      }
+      if(aind > 0)
+         System.out.println("No Inventory \n");
+      else
+         for(int i = 0; i <= aind; i++)
+         {
+            System.out.println("Movie: \n");
+            printone(i); 
+         }
    }
 }   
       
