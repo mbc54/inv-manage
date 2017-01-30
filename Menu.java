@@ -50,8 +50,18 @@ public class Menu
     }
     public int three(Scanner cin)
     {
+       int index;
        System.out.println("Enter a SKU for the movie to print: ");
-       inv.printone(inv.find(cin.nextInt()));
+       index = inv.find(cin.nextInt());
+       if(index < 0)
+       {
+          System.out.println("Movie not found");
+          return 0;
+       }
+       else
+       {
+          inv.printone(index);
+       }
        return 0;
     }
     public int four()

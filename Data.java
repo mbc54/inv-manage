@@ -43,10 +43,10 @@ public class Data
    }
    public void printall()
    {
-	   for(int i = 0; i <= aind; i++)
+      for(int i = 0; i <= aind; i++)
       {
-         System.out.println("Movie " + i + ": \n");
-         printone(i);
+         System.out.println("Movie: \n");
+         printone(i); 
       }
    }
 }   

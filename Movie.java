@@ -7,20 +7,4 @@ public class Movie
    public String price; 
    public int quantity;
 
-   public int sku()
-   {
-      return sku;
-   }
-   public String title()
-   {
-      return title;
-   }
-   public String price()
-   {
-      return price;
-   }
-   public int quantity()
-   {
-      return quantity;
-   }
 }
