@@ -43,7 +43,7 @@ public class Data
    }
    public void printall()
    {
-      if(aind > 0)
+      if(aind < 0)
          System.out.println("No Inventory \n");
       else
          for(int i = 0; i <= aind; i++)
