@@ -24,8 +24,9 @@ public class Menu
         System.out.println("Please enter the movie title: ");
         cin.nextLine();
         temp.title = cin.nextLine(); 
-        System.out.println("Please enter the movie price: "); 
+        System.out.println("Please enter the movie price (0.00 format): "); 
         temp.price = cin.nextLine();
+        //test for incorrect format?
         System.out.println("Please enter the quantity of the movie: "); 
         temp.quantity = cin.nextInt();
         inv.add(temp);
