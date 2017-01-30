@@ -31,31 +31,49 @@ public class Menu
         inv.add(temp);
         return 0;
     }
-    public int remove(int index)
+    public int two(Scanner cin)
     {
+       int id;
+       System.out.println("Enter a SKU for the movie to be removed: ");
+       int index = inv.find(cin.nextInt());
+       if(index < 0)
+       {
+          System.out.println("Movie not found");
+          return 0;
+       }
+       else
+       {
+          inv.remove(index);
+       }
        return 0;
     }
-    public void action(int choice, Scanner cin)
+    public int three(Scanner cin)
     {
+       System.out.println("Enter a SKU for the movie to print: ");
+       inv.printone(inv.find(cin.nextInt()));
+       return 0;
+    }
+    public int four()
+    {
+       inv.printall();
+       return 0;
+    }
+
+    public int action(int choice, Scanner cin)
+    {
+       int returnval = 0;
        if(choice == 1)
-          one(cin);
+          returnval = one(cin);
+       if(choice == 2)
+       {
+          returnval = two(cin);
+       }
+       if(choice == 3)
+          returnval = three(cin);
+       if(choice == 4)
+          returnval = four();
+       if(choice == 5)
+          returnval = 1;
+       return returnval;
     }
 }
-   
-   /*
-   public //response
-   {
-   }
-   public //remove
-   {
-   }
-   public //show movie
-   {
-   }
-   public //show inventory in table
-   {
-   }
-   public //quit (save file)
-   {
-   } 
-   */

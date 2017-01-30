@@ -15,23 +15,37 @@ public class Data
          aind++;
       datan.add(aind, var);
    }
-   public void remove(int index)
+   public int find(int sk)
    {
-      datan.remove(index);  
+      Movie temp = new Movie();
+      for(int i = 0; i <= aind; i++)
+      {
+         temp = datan.get(i);
+         if(temp.sku == sk)
+            return i;
+      }
+      return -1;
+   }
+   public int remove(int index)
+   {
+      datan.remove(index);
+      aind--;
+      return 0;  
    }
    public void printone(int index)
    {
       Movie temp = new Movie();
       temp = datan.get(index);
-      System.out.println("SKU: " + temp.sku + "\nTitle: " + temp.title + "\n" 
-                         + "Price: $" + temp.price + "\n" + "Quantity: " + 
-                         temp.quantity);
+      System.out.println("      SKU: " + temp.sku + "\n" + 
+                         "    Title: " + temp.title + "\n" +
+                         "    Price: $" + temp.price + "\n" + 
+                         " Quantity: " + temp.quantity + "\n");
    }
    public void printall()
    {
-      for(int i = 0; i < aind; i++)
+	   for(int i = 0; i <= aind; i++)
       {
-         System.out.println("Movie " + i + ": ");
+         System.out.println("Movie " + i + ": \n");
          printone(i);
       }
    }
