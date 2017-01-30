@@ -1,5 +1,6 @@
 package inv.manage;
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 
 public class InventoryDriver
 {
@@ -9,12 +10,27 @@ public class InventoryDriver
       //open file
       //create instance of inventory 
       //close file
-      Menu drive = new Menu();
+      Data drive = new Data();
       int stop = 0;
       while(stop == 0)
       {
          Scanner input = new Scanner(System.in);
-         stop = drive.action(drive.prntmenu(input), input);
+         try
+         {
+            stop = drive.action(input);
+         }
+         catch(InputMismatchException x)
+         {
+            System.err.println("\nEnter Valid Input.\n");
+         }
+         catch(ArrayIndexOutOfBoundsException y)
+         {
+            System.err.println("\nMovie Not Found.\n");
+         }
+         catch(IndexOutOfBoundsException z)
+         {
+            System.err.println("\nNo Inventory to Print.\n");
+         }
       }           
    }
 }

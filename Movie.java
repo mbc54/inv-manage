@@ -4,7 +4,7 @@ public class Movie
 {
    public int sku;
    public String title;
-   public String price; 
+   public Double price; 
    public int quantity;
 
 }
