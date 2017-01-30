@@ -15,20 +15,25 @@ public class Menu
         int number_choice = cin.nextInt();
         return number_choice;
     }
-    public void one(Scanner cin)
+    public int one(Scanner cin)
     {
         Movie temp = new Movie();
         String res;
-        System.out.println("Please enter a unique SKU (integer): ");
+        System.out.println("Please enter a unique SKU (integer): " );
         temp.sku = cin.nextInt();
         System.out.println("Please enter the movie title: ");
-        res = cin.nextLine(); 
+        cin.nextLine();
+        temp.title = cin.nextLine(); 
         System.out.println("Please enter the movie price: "); 
         temp.price = cin.nextLine();
         System.out.println("Please enter the quantity of the movie: "); 
         temp.quantity = cin.nextInt();
         inv.add(temp);
-        inv.printone(0);
+        return 0;
+    }
+    public int remove(int index)
+    {
+       return 0;
     }
     public void action(int choice, Scanner cin)
     {

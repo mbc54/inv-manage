@@ -5,12 +5,16 @@ public class InventoryDriver
 {
    public static void main(String[] args)
    {
+      
       //open file
       //create instance of inventory 
       //close file
       Menu drive = new Menu();
-      Scanner input = new Scanner(System.in);
-      drive.action(drive.prntmenu(input), input);
-                 
+      int stop = 0;
+      while(stop == 0)
+      {
+         Scanner input = new Scanner(System.in);
+         stop = drive.action(drive.prntmenu(input), input);
+      }           
    }
 }
