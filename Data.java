@@ -4,8 +4,34 @@ import java.io.*;
 
 public class Data
 {
-   ArrayList<Movie> datan = new ArrayList<Movie>(); 
-   int aind = -1;
+   ArrayList<Movie> datan = new ArrayList<Movie>();
+   int aind = -1; 
+   public int popArray()
+   {
+      try 
+      {
+         FileInputStream fis = new FileInputStream("MovieFile");
+         ObjectInputStream ois = new ObjectInputStream(fis);
+         datan = (ArrayList<Movie>)ois.readObject(); 
+         fis.close();
+         return 0;
+      } 
+      catch (FileNotFoundException e) 
+      {
+         System.out.println("No Exsisting Inventory.");
+         return 1;
+      } 
+      catch (IOException e) 
+      {
+         System.out.println("Problem with file input.");
+         return 1;
+      }   
+      catch (ClassNotFoundException e) 
+      {
+         System.out.println("Class not found on input from file.");
+         return 1;
+      }
+   }
    public int prntmenu(Scanner cin)
    {
       System.out.println(
@@ -15,7 +41,13 @@ public class Data
          "4. Display the inventory in a table (in any order). \n" +
          "5. Quit");
       int number_choice = cin.nextInt();
+      if(aind == -1)
+      {
+         if(popArray() == 0)
+            aind = datan.size() - 1;
+      }
       return number_choice;
+      
    }
    public int find(int sk)
    {
@@ -71,10 +103,12 @@ public class Data
       System.out.println("Enter a SKU for the movie to print: ");
       int index = find(cin.nextInt());
       temp = datan.get(index);
-      System.out.println("      SKU: " + temp.sku + "\n" + 
-                         "    Title: " + temp.title + "\n" +
-                         "    Price: $" + temp.price + "\n" + 
-                         " Quantity: " + temp.quantity + "\n");
+      System.out.printf("      SKU:%3d\n    TITLE:%3S\n    PRICE: $%.2f\n QUANTITY:%3d"
+                         ,temp.sku, temp.title,temp.price, temp.quantity);
+      //System.out.printf("      SKU: " + temp.sku + "\n" + 
+      //                   "    Title: " + temp.title + "\n" +
+      //                   "    Price: + temp.price + "\n" + 
+      //                   " Quantity: " + temp.quantity + "\n");
       return 0;
    }
    public int printall()
@@ -120,7 +154,21 @@ public class Data
        if(choice == 4)
           return printall();
        if(choice == 5)
-          return 1;
+       {
+          try 
+          {
+             FileOutputStream fos = new FileOutputStream("MovieFile");
+             ObjectOutputStream oos = new ObjectOutputStream(fos);
+             oos.writeObject(datan);  
+             fos.close();
+             return 1;
+          }  
+          catch (IOException e) 
+          {
+            System.out.println("Problem with file output");
+            return 0;
+          }
+       } 
        else
 	  System.out.println("\nNot a Valid Menu Choice.\n");
        return 0;
