@@ -1,9 +1,16 @@
+/*
+This class will manage a type "list" that is an arrayList of 3 different data
+objects. 
+
+
+*/
 package inv.manage;
 import java.util.*;
 import java.io.*;
 
 public class Data
 {
+   //switch type to List
    ArrayList<Movie> datan = new ArrayList<Movie>();
    int aind = -1; 
    public int popArray()
@@ -12,6 +19,7 @@ public class Data
       {
          FileInputStream fis = new FileInputStream("MovieFile");
          ObjectInputStream ois = new ObjectInputStream(fis);
+         //switch type to list
          datan = (ArrayList<Movie>)ois.readObject(); 
          fis.close();
          return 0;
@@ -34,6 +42,7 @@ public class Data
    }
    public int prntmenu(Scanner cin)
    {
+      //update menu based on sample output
       System.out.println(
          "\n1. Add a movie to the inventory \n" +
          "2. Remove a movie from the inventory (by sku). \n" +
@@ -51,6 +60,7 @@ public class Data
    }
    public int find(int sk)
    {
+      //update data type to list
       Movie temp = new Movie();
       if(aind <= 0)
          return -1;
@@ -64,6 +74,8 @@ public class Data
    }
    public int add(Scanner cin)
    {  
+      //update data type and input options
+      //make add product menu handled by object (each is unique)
       Movie temp = new Movie();
       System.out.println("\nPlease enter a unique SKU (integer): " ); 
       temp.sku = cin.nextInt();
@@ -78,10 +90,12 @@ public class Data
       {
 	 aind++;
          datan.add(aind, temp);
+         //update output
          System.out.println("\nMovie Added.\n");
       }
       else
       {
+         //update input
 	  System.out.println("\nDuplicate Movie.\n");
       }
       return 0;
@@ -89,6 +103,7 @@ public class Data
   
    public int remove(Scanner cin)
    {
+      //should work fine, but will need to test
       int id;
       System.out.println("Enter a SKU for the movie to be removed: ");
       int index = find(cin.nextInt());
@@ -99,20 +114,18 @@ public class Data
    }
    public int printone(Scanner cin)
    {
+      //update data type, actual print should be handled by object
       Movie temp = new Movie();
       System.out.println("Enter a SKU for the movie to print: ");
       int index = find(cin.nextInt());
       temp = datan.get(index);
       System.out.printf("      SKU:%3d\n    TITLE:%3S\n    PRICE: $%.2f\n QUANTITY:%3d"
                          ,temp.sku, temp.title,temp.price, temp.quantity);
-      //System.out.printf("      SKU: " + temp.sku + "\n" + 
-      //                   "    Title: " + temp.title + "\n" +
-      //                   "    Price: + temp.price + "\n" + 
-      //                   " Quantity: " + temp.quantity + "\n");
       return 0;
    }
    public int printall()
    {
+      //update data type, should work may need a little love
       Movie temp = new Movie();
       int skulen = 5,
           titlen = 10,
@@ -141,9 +154,19 @@ public class Data
       if(aind < 0)
          System.out.println("\nNo Inventory to Print.\n");
       return 0;
-   }  
+   }
+
+   //-We need to implement processSale() method. 
+   //-user enters sku, quantity, and cost 
+   //-method updates quantity, or prints an error message if there is not enough
+   // inventory, (if error or maybe not at all ever), don't remove product from inventory
+   //-need to compute and print total price, shipping, and commission based on
+   // the table in assignment. (looks annoying)
+   //-format output
+
    public int action(Scanner cin) 
    {
+       //add actions for new menu choices
        int choice = prntmenu(cin);
        if(choice == 1)
           return add(cin);
@@ -155,6 +178,7 @@ public class Data
           return printall();
        if(choice == 5)
        {
+          //update file name 
           try 
           {
              FileOutputStream fos = new FileOutputStream("MovieFile");
