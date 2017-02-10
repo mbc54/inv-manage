@@ -12,6 +12,7 @@ public class InventoryDriver
       //close file
       Data drive = new Data();
       int stop = 0;
+      drive.popArray();
       while(stop == 0)
       {
          Scanner input = new Scanner(System.in);

@@ -1,22 +1,21 @@
 package inv.manage;
+import java.util.*;
+
 import java.io.*;
 
-public class Toy implements Serializable
+public class Toy extends List
 {
-   int sku, quantity;
-   String title;
-   Double price;
-   Movie() {}; 
-   Movie(int sku, int quantity, String title, Double Price)
-   {
-      this.sku = sku;
-      this.quantity = quantity;
-      this.title = title;
-      this.price = price;
-   }
-   public String display() 
-   {
-      return (sku + " " + title + " " + price  + " " + quantity);
-   }
-   
+    Double weight;
+    Toy() {}; 
+    Toy(int sku, int quantity, String title, Double price, Double weight)
+    {
+        super(sku, quantity, title, price);
+        this.weight = weight;
+    }
+
+    public void print()
+    {
+        super.printsame();
+        System.out.printf("\n   WEIGHT:  %.2f", weight);
+    }
 }

@@ -1,22 +1,22 @@
 package inv.manage;
+import java.util.*;
 import java.io.*;
 
-public class Movie implements Serializable
+public class Movie extends List 
 {
-   int sku, quantity;
-   String title;
-   Double price;
-   Movie() {}; 
-   Movie(int sku, int quantity, String title, Double Price)
-   {
-      this.sku = sku;
-      this.quantity = quantity;
-      this.title = title;
-      this.price = price;
-   }
-   public String display() 
-   {
-      return (sku + " " + title + " " + price  + " " + quantity);
-   }
-   
+    int upc;
+    Movie() {}; 
+    Movie(int sku, int quantity, String title, Double price, int upc)
+    {
+        super(sku, quantity, title, price);
+        this.upc = upc;
+    }
+
+    public void print()
+    {
+        super.printsame();
+        System.out.printf("     \nUPC:%3d", upc);
+    }
+
+
 }
