@@ -110,10 +110,6 @@ public class Data
             List temp = new Toy(tsku, tquan, ttit, tprice, tweight);
             addListEl(tsku, temp);
         }
-        else 
-       {
-            System.out.println("Invalid Type");
-        }
         return 0;
     }
 
@@ -218,15 +214,11 @@ public class Data
             Comparator<List> comp = new ListByTitle();
             Collections.sort(datan, comp);
             return printall();
-<<<<<<< HEAD
         }    
         if(choice == 6) //process sale
         {
           ;
         }
-
-=======
->>>>>>> e610737... Error message/loop added for wrong product type. Some Menu Options corrected. KD
         if(choice == 7)
         {
             try 
