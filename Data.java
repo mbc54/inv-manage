@@ -48,7 +48,7 @@ public class Data
                 "2. Remove a product from the inventory (by sku). \n" +
                 "3. Display the information for a product (given by the sku). \n" +
                 "4. Display the inventory in a table (sorted by SKU). \n" +
-                "5. Display the inventory in a table (sorted by title. \n" +
+                "5. Display the inventory in a table (sorted by title). \n" +
                 "6. Process a Sale. \n" +
                 "7. Quit");
         return cin.nextInt();
@@ -68,16 +68,22 @@ public class Data
     public int add(Scanner cin)
     {  
         tsku = 0;
-        System.out.println("\nPlease enter the product type (M, B, T): ");
+        System.out.println("\nPlease enter the product type.");
+        System.out.println("\nEnter 'M' for movie, 'B' for Book, or 'T' for Toy.");
         char proty = cin.next().charAt(0);
+        while(proty != 'm' && proty != 'M' && proty != 'b' && proty != 'B' &&
+              proty != 't' && proty != 'T') {
+            System.out.println("\nInvalid Type. Please choose M, B, or T : ");
+            proty = cin.next().charAt(0);
+        }
         System.out.println("Please enter a unique SKU (integer): " ); 
         tsku = cin.nextInt();
-        System.out.println("Please enter the movie title: "); 
+        System.out.println("Please enter the product title: "); 
         cin.nextLine(); 
         ttit = cin.nextLine();  
-        System.out.println("Please enter the movie price (0.00 format): ");  
+        System.out.println("Please enter the product price (0.00 format): ");  
         tprice = cin.nextDouble();         
-        System.out.println("Please enter the quantity of the movie: ");  
+        System.out.println("Please enter the quantity of the product: ");  
         tquan = cin.nextInt();
 
         if(proty == 'm' || proty == 'M')
@@ -105,7 +111,7 @@ public class Data
             addListEl(tsku, temp);
         }
         else 
-        {
+       {
             System.out.println("Invalid Type");
         }
         return 0;
@@ -134,6 +140,8 @@ public class Data
     }
     public int printone(List temp)
     {
+
+        //need conditional to search for temp in list
         temp.print();
         return 0;
     }
@@ -201,7 +209,7 @@ public class Data
         }
         if(choice == 4)
             return printall();
-        if(choice == 5)
+        if(choice == 7)
         {
             try 
             {
@@ -216,7 +224,7 @@ public class Data
                 System.out.println("Problem with file output");
                 return 0;
             }
-        } 
+        }
         else
             System.out.println("\nNot a Valid Menu Choice.\n");
         return 0;
