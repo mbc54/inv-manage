@@ -15,8 +15,6 @@ public class Movie extends List
     public void print()
     {
         super.printsame();
-        System.out.printf("     \nUPC:%3d", upc);
+        System.out.printf("\n     UPC:%3d", upc);
     }
-
-
 }

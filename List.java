@@ -2,7 +2,7 @@ package inv.manage;
 import java.util.*;
 import java.io.*;
 
-public class List implements Serializable
+public class List implements Serializable, Comparable<List> 
 {
     int sku, quantity;
     String title;
@@ -17,17 +17,25 @@ public class List implements Serializable
         this.title = title;
         this.price = price;
     }
-
     public void printsame()
     {
         System.out.printf("      SKU:%3d\n    TITLE:%3S\n    PRICE: $%.2f\n QUANTITY:%3d"
                 , sku, title, price, quantity);
     }
-
     public void print()
     {
         printsame();
     }
-
-
+    public int getSku()
+    {
+        return sku;
+    }
+    public String getTitle()
+    {
+        return title;
+    }
+    public int compareTo(List rhs)
+    {
+        return title.compareTo(rhs.title);
+    }
 }
