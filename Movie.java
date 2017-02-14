@@ -5,6 +5,8 @@ import java.io.*;
 public class Movie extends List 
 {
     int upc;
+    double commission = .12;
+    double shipcred = 2.98;
     Movie() {}; 
     Movie(int sku, int quantity, String title, Double price, int upc)
     {
@@ -17,4 +19,18 @@ public class Movie extends List
         super.printsame();
         System.out.printf("\n     UPC:%3d", upc);
     }
+    public void processSale(double q, double scost)
+    {
+        double pri = super.compPrice(q);
+        double com = super.compCom(commission, q);
+        double shipcr = super.compShip(shipcred, q);
+        double profit = super.compProf(pri, shipcr, com, scost);
+        super.decQuan(q);
+        System.out.printf("Total Price: %.2f\n", pri);
+        System.out.printf("Total Commission: %.2f\n", com);
+        System.out.printf("Total Shipping Credit: %.2f\n", shipcr);
+        System.out.printf("Total Profit: %.2f\n", profit);
+
+    }
+
 }

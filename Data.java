@@ -64,7 +64,13 @@ public class Data
         }
         return -1;
     }
-
+    public boolean checkDup(int sk)
+    {
+        boolean found = false;
+        if(find(sk) >= 0)
+            found = true;
+        return found;
+    }
     public int add(Scanner cin)
     {  
         tsku = 0;
@@ -115,7 +121,7 @@ public class Data
 
     public void addListEl(int sk, List el)
     {
-        if(find(sk) <= 0)
+        if(!(checkDup(sk)))
         {
             datan.add(el);
             System.out.println("\nProduct added.\n");
@@ -174,11 +180,10 @@ public class Data
             System.out.println("\nNo Inventory to Print.\n");
         return 0;
     }
-    //public void Sale(List temp)
-    //{
-    //    temp.processSale();
-    //    return 0;
-    //}
+    public void Sale(List temp, double quant, double ship_c)
+    {
+        temp.processSale(quant, ship_c);
+    }
 
     //-We need to implement processSale() method. 
     //-user enters sku, quantity, and cost 
@@ -217,7 +222,14 @@ public class Data
         }    
         if(choice == 6) //process sale
         {
-          ;
+           System.out.println("Enter SKU of sold products: ");
+           int index = find(cin.nextInt());
+           System.out.println("Enter the quantity to be sold: ");
+           double quan = cin.nextDouble();
+           System.out.println("Enter the cost of shipping: ");
+           double ship = cin.nextDouble();
+           Sale(datan.get(index), quan, ship);
+           return 0;
         }
         if(choice == 7)
         {
