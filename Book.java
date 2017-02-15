@@ -24,7 +24,7 @@ public class Book extends List
     }
      public void printAll()
     {
-        String type = "Book";
+        String type = "Book    ";
         super.printsameAll(type);
     }
 

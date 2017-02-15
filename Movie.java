@@ -21,7 +21,7 @@ public class Movie extends List
     }
     public void printAll()
     {
-        String type = "Movie";
+        String type = "Movie   ";
         super.printsameAll(type);
     }
 

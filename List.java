@@ -24,12 +24,13 @@ public class List implements Serializable, Comparable<List>
     }
     public void printsameAll(String type)
     {
-        int skulen = 5,
+        int typeln = (10 - type.length()),
+            skulen = 5,
             titlen = 10,
             prilen = 6,
             qualen = 2;
-
-        if((Integer.toString(sku)).length() > skulen)
+        
+       if((Integer.toString(sku)).length() > skulen)
             skulen = (Integer.toString(sku)).length() + 1;
         if(title.length() > titlen) 
             titlen = title.length() + 1;
@@ -38,9 +39,8 @@ public class List implements Serializable, Comparable<List>
         if((Integer.toString(quantity)).length() > qualen)
             qualen = (Integer.toString(quantity)).length() + 1;
 
-        System.out.printf(type + "   %-" + skulen + "d %-" + titlen + 
-                "S $%-" + prilen + ".2f %-" + qualen + "d %n", sku, title, 
-                price, quantity);
+        System.out.printf(type + "   %-" + skulen + "d $%-" + prilen + 
+                ".2f %-" + titlen + "S\n", sku, price, title);
     }
     public void printAll()
     {

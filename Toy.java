@@ -24,7 +24,7 @@ public class Toy extends List
     }
     public void printAll()
     {
-        String type = "Toy";
+        String type = "Toy     ";
         super.printsameAll(type);
     }
     public void processSale(double q, double scost)

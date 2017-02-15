@@ -38,11 +38,12 @@ public class Data
     public int prntmenu(Scanner cin)
     {
         System.out.println(
-                "\n1. Add a product to the inventory \n" +
-                "2. Remove a product from the inventory (by sku). \n" +
-                "3. Display the information for a product (given by the sku). \n" +
-                "4. Display the inventory in a table (sorted by SKU). \n" +
-                "5. Display the inventory in a table (sorted by title). \n" +
+                "\nOnline Store Inventory Menu \n\n" +
+                "1. Add a Product to the Inventory \n" +
+                "2. Remove a Product From the Inventory (by SKU). \n" +
+                "3. Display the Information for a Product (Given by the SKU). \n" +
+                "4. Display the Inventory in a Table (Sorted by SKU). \n" +
+                "5. Display the Inventory in a table (Sorted by Title). \n" +
                 "6. Process a Sale. \n" +
                 "7. Quit");
         return cin.nextInt();
