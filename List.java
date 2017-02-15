@@ -2,6 +2,12 @@ package inv.manage;
 import java.util.*;
 import java.io.*;
 
+/**
+* serializable class that processes and prints lists to the screen, either
+* lists containing only a user-specified item or all available items
+* @author Michael Childress
+* @author Kyle Duncan
+*/
 public class List implements Serializable, Comparable<List> 
 {
     int sku, quantity;
@@ -22,6 +28,11 @@ public class List implements Serializable, Comparable<List>
         System.out.printf("      SKU:%3d\n    TITLE:%3S\n    PRICE: $%.2f\n QUANTITY:%3d"
                           , sku, title, price, quantity);
     }
+
+    /**
+    * prints all products to a table, where each cell is the length of the 
+    * longest item in that row
+    */
     public void printsameAll(String type)
     {
         int typeln = (10 - type.length()),
@@ -103,7 +114,10 @@ public class List implements Serializable, Comparable<List>
         }
     }
 
-
+    /**
+    * prints sale information, including sale price, commission, shipping,
+    * and profit.
+    */
     public void processSale(double q, double scost)
     {
         double pri = compPrice(q);

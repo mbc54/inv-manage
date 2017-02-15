@@ -2,14 +2,16 @@ package inv.manage;
 import java.util.*;
 import java.io.*;
 
+/**
+* contains main, handles some exceptions
+* @author Michael Childress
+* @author Kyle Duncan
+*/
 public class InventoryDriver
 {
    public static void main(String[] args)
    {
-      
-      //open file
-      //create instance of inventory 
-      //close file
+     
       Data drive = new Data();
       int stop = 0;
       drive.popArray();
@@ -26,7 +28,7 @@ public class InventoryDriver
          }
          catch(ArrayIndexOutOfBoundsException y)
          {
-            System.err.println("\nMovie Not Found.\n");
+            System.err.println("\nProduct Not Found.\n");
          }
          catch(IndexOutOfBoundsException z)
          {

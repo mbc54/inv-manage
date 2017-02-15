@@ -2,6 +2,12 @@ package inv.manage;
 import java.util.*;
 import java.io.*;
 
+/**
+* lists all serialized information in table by SKU
+* @author Michael Childress
+* @author Kyle Duncan
+* @return -1 if error
+*/
 public class ListBySku implements Comparator<List> 
 {
        public int compare(List lhs, List rhs) 

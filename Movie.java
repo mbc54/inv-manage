@@ -2,6 +2,10 @@ package inv.manage;
 import java.util.*;
 import java.io.*;
 
+/**
+* maintains all the information included for the movie class, includes
+* processSale specific to movie info
+*/
 public class Movie extends List 
 {
     int upc;

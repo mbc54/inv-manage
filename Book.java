@@ -2,6 +2,11 @@ package inv.manage;
 import java.util.*;
 import java.io.*;
 
+/**
+* class of the LIST superclass for book that holds book information
+* @author Michael Childress
+* @author Kyle Duncan
+*/
 public class Book extends List
 {
     int isbn;
@@ -28,6 +33,10 @@ public class Book extends List
         super.printsameAll(type);
     }
 
+    /**
+    * processes a sale for the book type, taking into account the commission
+    * specific to books
+    */
     public void processSale(double q, double scost)
     {
         double pri = super.compPrice(q);

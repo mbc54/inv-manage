@@ -3,6 +3,12 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
+/**
+* includes all the information needed for toy, including weight (pounds 
+* and ounces), shipping, commission.
+* @author Michael Childress
+* @author Kyle Duncan
+*/
 public class Toy extends List
 {
     double weight_oz;

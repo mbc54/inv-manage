@@ -2,7 +2,12 @@
 package inv.manage;
 import java.util.*;
 import java.io.*;
-
+/**
+* class that holds data, stores i/o information pertaining to menu,
+* processes adding/removing inventory, and exception management
+* @author Michael Childress
+* @author Kyle Duncan
+*/
 public class Data
 {
     ArrayList<List> datan = new ArrayList<List>();
@@ -35,6 +40,10 @@ public class Data
             return 1;
         }
     }
+    /**
+    * prints the menu
+    * @returns the int representing the chosen menu option
+    */
     public int prntmenu(Scanner cin)
     {
         System.out.println(
@@ -136,16 +145,26 @@ public class Data
         System.out.println("\nProduct Removed.\n");
         return 0;  
     }
+    /**
+    * prints a single item specified by SKU
+    */
     public int printone(List temp)
     {
         temp.print();
         return 0;
     }
+
+    /**
+    * prints all items, including serialized ones
+    */
     public void printall(List temp)
     { 
         temp.printAll();
     }
 
+    /**
+    * calls procesSale
+    */
     public void Sale(List temp, double quant, double ship_c)
     {
         temp.processSale(quant, ship_c);
