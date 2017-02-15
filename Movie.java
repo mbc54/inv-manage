@@ -19,18 +19,25 @@ public class Movie extends List
         super.printsame();
         System.out.printf("\n     UPC:%3d", upc);
     }
+    public void printAll()
+    {
+        String type = "Movie";
+        super.printsameAll(type);
+    }
+
     public void processSale(double q, double scost)
     {
         double pri = super.compPrice(q);
         double com = super.compCom(commission, q);
         double shipcr = super.compShip(shipcred, q);
         double profit = super.compProf(pri, shipcr, com, scost);
-        super.decQuan(q);
-        System.out.printf("Total Price: %.2f\n", pri);
-        System.out.printf("Total Commission: %.2f\n", com);
-        System.out.printf("Total Shipping Credit: %.2f\n", shipcr);
-        System.out.printf("Total Profit: %.2f\n", profit);
-
+        if(super.decQuan(q) == 0)
+        {
+            System.out.printf("Total Price: %.2f\n", pri);
+            System.out.printf("Total Commission: %.2f\n", com);
+            System.out.printf("Total Shipping Credit: %.2f\n", shipcr);
+            System.out.printf("Total Profit: %.2f\n", profit);
+        }   
     }
 
 }

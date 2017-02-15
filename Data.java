@@ -1,16 +1,10 @@
-/*
-   This class will manage a type "list" that is an arrayList of 3 different data
-   objects. 
 
-
- */
 package inv.manage;
 import java.util.*;
 import java.io.*;
 
 public class Data
 {
-    //switch type to List
     ArrayList<List> datan = new ArrayList<List>();
     int tsku, tquan, tisbn, tupc;
     Double tprice, tweight;
@@ -78,7 +72,8 @@ public class Data
         System.out.println("\nEnter 'M' for movie, 'B' for Book, or 'T' for Toy.");
         char proty = cin.next().charAt(0);
         while(proty != 'm' && proty != 'M' && proty != 'b' && proty != 'B' &&
-              proty != 't' && proty != 'T') {
+              proty != 't' && proty != 'T') 
+        {
             System.out.println("\nInvalid Type. Please choose M, B, or T : ");
             proty = cin.next().charAt(0);
         }
@@ -142,60 +137,21 @@ public class Data
     }
     public int printone(List temp)
     {
-
-        //need conditional to search for temp in list
         temp.print();
         return 0;
     }
-    public int printall()
-    {
-        //update data type, should work may need a little love
-        List temp = new List();
-        int skulen = 5,
-            titlen = 10,
-            prilen = 6,
-            qualen = 2;
-
-        for(int i = 0; i < datan.size(); i++)
-        {
-            temp = datan.get(i);
-            if((Integer.toString(temp.sku)).length() > skulen)
-                skulen = (Integer.toString(temp.sku)).length() + 1;
-            if(temp.title.length() > titlen) 
-                titlen = temp.title.length() + 1;
-            if((Double.toString(temp.price)).length() > prilen)
-                prilen = (Double.toString(temp.price)).length() + 1;
-            if((Integer.toString(temp.quantity)).length() > qualen)
-                qualen = (Integer.toString(temp.quantity)).length() + 1;
-        }
-        for(int i = 0; i < datan.size(); i++)
-        {   
-            temp = datan.get(i);
-            System.out.printf("  %-" + skulen + "d %-" + titlen + 
-                    "S $%-" + prilen + ".2f %-" + qualen + "d %n", temp.sku, temp.title, 
-                    temp.price, temp.quantity); 
-        }  
-
-        if(datan.size() <= 0)
-            System.out.println("\nNo Inventory to Print.\n");
-        return 0;
+    public void printall(List temp)
+    { 
+        temp.printAll();
     }
+
     public void Sale(List temp, double quant, double ship_c)
     {
         temp.processSale(quant, ship_c);
     }
 
-    //-We need to implement processSale() method. 
-    //-user enters sku, quantity, and cost 
-    //-method updates quantity, or prints an error message if there is not enough
-    // inventory, (if error or maybe not at all ever), don't remove product from inventory
-    //-need to compute and print total price, shipping, and commission based on
-    // the table in assignment. (looks annoying)
-    //-format output
-
     public int action(Scanner cin) 
     {
-        //add actions for new menu choices
         int choice = prntmenu(cin);
         if(choice == 1)
             return add(cin);
@@ -208,19 +164,37 @@ public class Data
 
             return printone(datan.get(index));
         }
-        if(choice == 4) //sorted by sku
+        if(choice == 4) 
         {
             Comparator<List> comp = new ListBySku();
             Collections.sort(datan, comp);
-            return printall();
+            if(datan.isEmpty())
+                System.out.println("\nNo inventory to print.\n");
+            else
+            {
+                for(int i = 0; i < datan.size(); i++)
+                {
+                    printall(datan.get(i));
+                }
+            }
+            return 0;
         }
-        if(choice == 5) //sorted by title
+        if(choice == 5) 
         {
             Comparator<List> comp = new ListByTitle();
             Collections.sort(datan, comp);
-            return printall();
+            if(datan.isEmpty())
+                System.out.println("\nNo inventory to print.\n");
+            else
+            {
+                for(int i = 0; i < datan.size(); i++)
+                {
+                    printall(datan.get(i));
+                }
+            }
+            return 0;
         }    
-        if(choice == 6) //process sale
+        if(choice == 6) 
         {
            System.out.println("Enter SKU of sold products: ");
            int index = find(cin.nextInt());
